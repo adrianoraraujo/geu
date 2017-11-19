@@ -10,7 +10,7 @@ public class Espaco {
 	
 	private Bloco bloco;
 	
-	private String funcao;
+	private Tipo tipo;
 
 	public String getIdentificacao() {
 		return identificacao;
@@ -36,13 +36,7 @@ public class Espaco {
 		this.bloco = bloco;
 	}
 
-	public String getFuncao() {
-		return funcao;
-	}
 
-	public void setFuncao(String funcao) {
-		this.funcao = funcao;
-	}
 
 	public Integer getId() {
 		return id;
@@ -50,6 +44,14 @@ public class Espaco {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Tipo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
 	}
 
 

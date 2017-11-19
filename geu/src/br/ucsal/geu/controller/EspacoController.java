@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.ucsal.geu.dao.BlocoDAO;
 import br.ucsal.geu.dao.EspacoDAO;
+import br.ucsal.geu.dao.TipoDAO;
 import br.ucsal.geu.model.Bloco;
 import br.ucsal.geu.model.Espaco;
+import br.ucsal.geu.model.Tipo;
 
 @WebServlet("/espacos")
 public class EspacoController extends HttpServlet {
@@ -29,6 +31,8 @@ public class EspacoController extends HttpServlet {
 		if (q != null && q.equals("new")) {
 			BlocoDAO dao = new BlocoDAO();
 			request.setAttribute("lista", dao.listar());
+			TipoDAO tipoDao = new TipoDAO();
+			request.setAttribute("listaTipo", tipoDao.listar());
 			request.getRequestDispatcher("espacoform.jsp").forward(request, response);
 		}else {
 			EspacoDAO dao = new EspacoDAO();
@@ -45,7 +49,7 @@ public class EspacoController extends HttpServlet {
 		String identificacao = request.getParameter("identificacao");
 		String andar = request.getParameter("andar");
 		String blocoID = request.getParameter("bloco");
-		String funcao = request.getParameter("funcao");
+		String tipoID = request.getParameter("tipo");
 		
 		Espaco espaco = new Espaco();
 		espaco.setIdentificacao(identificacao);
@@ -54,7 +58,11 @@ public class EspacoController extends HttpServlet {
 		int id = Integer.parseInt(blocoID);
 		Bloco bloco = blocoDAO.getByID(id);
 		espaco.setBloco(bloco);
-		espaco.setFuncao(funcao);
+
+		int id_tipo = Integer.parseInt(tipoID);
+		TipoDAO tipoDAO = new TipoDAO();
+		Tipo tipo = tipoDAO.getByID(id_tipo);
+		espaco.setTipo(tipo);
 		EspacoDAO dao = new EspacoDAO();
 		dao.inserir(espaco);
 		request.setAttribute("lista", dao.listar());
