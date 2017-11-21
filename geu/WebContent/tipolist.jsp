@@ -1,4 +1,3 @@
-<%@ taglib tagdir="/WEB-INF/tags" prefix="u"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
 <!DOCTYPE html >
 <html>
@@ -18,31 +17,25 @@
 <body>
 <c:import url="topo.jsp"></c:import>
 <div class="container">
-
 <div class="page-header">
-<h1> Inserir Espaços </h1>
+<h1> Lista Tipos </h1>
 </div>
+
+<table class="table" >
+<tr>
+<th> Nome </th>
+<th> Descricao </th>
+
+</tr>
+
+<c:forEach var="e" items="${lista}">
+<tr>
+ <td> ${e.nome} </td>
+ <td> ${e.descricao} </td>
  
-	<form action="espacos" method="post">
-		Identificação: <input name="identificacao" type="text" required><br>
-		Andar: <input name="andar" type="text" required><br>
-		Bloco: 
-		<select name="bloco" >
-			<option value="" selected>Selecione</option>
-			<c:forEach var="bloco" items="${listabloco}">
-				<option value="${bloco.id}">${bloco.letra}</option>
-			</c:forEach>
-		</select>
-	Tipo:<select name="tipo" >
-			<option value="" selected>Selecione</option>
-			<c:forEach var="tipo" items="${listatipo}">
-				<option value="${tipo.id}">${tipo.nome}</option>
-			</c:forEach>
-		</select>
-		<button type="submit">Salvar</button>
-	</form>
-
-
+<tr>
+</c:forEach>
+</table>
 </div>
 
 <c:import url="rodape.jsp"></c:import>

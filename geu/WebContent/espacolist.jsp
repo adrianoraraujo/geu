@@ -26,7 +26,7 @@
 <th>Identificação</th>
 <th>Andar</th>
 <th>Bloco</th>
-<th>Função</th> 
+<th>Tipo</th> 
 </tr>
 
 <c:forEach var="e" items="${lista}">
@@ -34,7 +34,7 @@
  <td>${e.identificacao}</td>
  <td>${e.andar}</td>
  <td>${e.bloco.letra}</td>
- <td>${e.funcao}</td>
+ <td>${e.tipo.nome}</td>
 <tr>
 </c:forEach>
 </table>
