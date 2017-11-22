@@ -21,34 +21,6 @@ public class EspacoDAO {
 		this.conexao = Conexao.getConexao();
 	}
 
-	public List<Espaco> listarLazy() {
-		Statement stmt;
-		List<Espaco> espacos = new ArrayList<>();
-		try {
-			stmt = conexao.getConnection().createStatement();
-			ResultSet rs = stmt.executeQuery("select id,identificacao,andar,funcao,bloco_id from espacos");
-			while(rs.next()) {
-				Espaco e = new Espaco();
-				e.setId(rs.getInt("id"));
-				e.setIdentificacao(rs.getString("identificacao"));
-				e.setAndar(rs.getString("andar"));
-				Bloco bloco = new Bloco();
-				bloco.setId(rs.getInt("bloco_id"));
-				e.setBloco(bloco);
-				espacos.add(e);
-				Tipo tipo = new Tipo();
-				tipo.setId(rs.getInt("tipo_id"));
-				e.setTipo(tipo);
-				espacos.add(e);
-			}
-			stmt.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	
-		return espacos;
-	}
-	
 	
 	public List<Espaco> listar() {
 		Statement stmt;

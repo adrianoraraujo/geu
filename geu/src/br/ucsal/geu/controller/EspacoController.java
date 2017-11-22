@@ -58,7 +58,7 @@ public class EspacoController extends HttpServlet {
 		int id = Integer.parseInt(blocoID);
 		Bloco bloco = blocoDAO.getByID(id);
 	TipoDAO tipoDAO = new TipoDAO();
-		int id1 = Integer.parseInt(blocoID);
+		int id1 = Integer.parseInt(tipoID);
 
 		Tipo tipo = tipoDAO.getByID(id1);
 

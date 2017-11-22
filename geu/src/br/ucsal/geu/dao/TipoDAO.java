@@ -7,7 +7,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ucsal.geu.model.Bloco;
 import br.ucsal.geu.model.Tipo;
 import br.ucsal.util.Conexao;
 
@@ -45,8 +44,7 @@ public class TipoDAO {
 	public void inserir(Tipo tipo) {
 		try {
 			
-			PreparedStatement ps = conexao.getConnection()
-					.prepareStatement("insert into tipos (nome,descricao) values (?,?);");
+			PreparedStatement ps = conexao.getConnection().prepareStatement("insert into tipos (nome,descricao) values (?,?);");
 			ps.setString(1, tipo.getNome());
 			ps.setString(2, tipo.getDescricao());
 		
